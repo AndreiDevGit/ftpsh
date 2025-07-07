@@ -1,0 +1,15 @@
+mysqli change port to 3307 conf.
+
+
+add to config.inc.php
+$cfg['Servers'][$i]['port'] = '3307';
+
+
+add user to admin group
+1. панель управлени - > пользователи -> созать пользователя
+2. группы - > группы -> администраторы -> добавить
+
+
+openVPN sites
+https://www.freeopenvpn.org/
+https://www.vpnbook.com/freevpn

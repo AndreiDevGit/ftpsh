@@ -1,0 +1,67 @@
+ADD USERS ROOT
+sudo passwd root
+adduser user01
+usermod -aG sudo user01
+sudo ls -la /root
+_____________________________________________________
+XAMPP install
+cd Downloads
+chmod +x filename.run
+sudo ./filename.run
+sudo /opt/lampp/lampp start
+_____________________________________________________
+
+OpenVpn (Router) install
+wget https://git.io/vpn -O openvpn-install.sh
+sudo chmod +x openvpn-install.sh
+sudo bash openvpn-install.sh
+//sudo cp /root/client1.ovpn ~
+
+____________________
+OpenVpn 2
+
+wget https://raw.githubusercontent.com/angristan/openvpn-install/master/openvpn-install.sh
+chmod +x openvpn-install.sh
+
+
+____________________________________________
+FTP vsftpd
+sudo adduser user1 --home /home/user1
+sudo adduser user2 --home /home/user2
+sudo adduser user3 --home /home/user3
+
+sudo mkdir /home/FTPshare
+
+sudo groupadd ftpgroup
+sudo usermod -aG ftpgroup user1
+sudo usermod -aG ftpgroup user2
+sudo usermod -aG ftpgroup user3
+
+sudo chgrp ftpgroup /home/FTPshare
+sudo chmod 775 /home/FTPshare  # Группа имеет полный доступ
+
+sudo apt update && sudo apt install vsftpd
+
+sudo nano /etc/vsftpd.conf
+
+local_enable=YES
+write_enable=YES
+chroot_local_user=YES
+allow_writeable_chroot=YES
+user_sub_token=$USER
+local_root=/home/$USER
+
+sudo ln -s /home/FTPshare /home/user1/FTPshare
+sudo ln -s /home/FTPshare /home/user2/FTPshare
+sudo ln -s /home/FTPshare /home/user3/FTPshare
+
+sudo systemctl restart vsftpd
+
+wget "https://github.com/AndreiDevGit/ftpsh/blob/main/ftp.sh"
+
+chmod +x ftp.sh
+
+chmod +x ftp.sh
+
+sudo ./ftp.sh
+
